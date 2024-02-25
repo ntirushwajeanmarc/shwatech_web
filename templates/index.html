@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- STYLES -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <!-- Include Prism.js -->
+<!-- Include highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- END OF STYLES -->
+    <title>{% block title %}Document{% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg bg-primary"  id="nav">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='images/image.png') }}" alt="Logo" style="height: 40px;"></a> <!-- Add your logo image here -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <!-- Arduino section -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  ARDUINO
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#arduino-introduction">Introduction to Arduino</a></li>
+                    <!-- Arduino Basics -->
+                    <li><a class="dropdown-item" href="#arduino-basics">Arduino Basics</a></li>
+                    <!-- Arduino IDE -->
+                    <li><a class="dropdown-item" href="#arduino-ide">Arduino IDE</a></li>
+                    <!-- Arduino Syntax -->
+                    <li><a class="dropdown-item" href="#arduino-syntax">Arduino Syntax</a></li>
+                    <!-- Arduino Variables and Constants -->
+                    <li><a class="dropdown-item" href="#arduino-variables">Arduino Variables and Constants</a></li>
+                    <!-- Digital Input and Output -->
+                    <li><a class="dropdown-item" href="#arduino-digital-io">Digital Input and Output</a></li>
+                    <!-- Analog Input and Output -->
+                    <li><a class="dropdown-item" href="#arduino-analog-io">Analog Input and Output</a></li>
+                    <!-- Arduino Control Structures -->
+                    <li><a class="dropdown-item" href="#arduino-control">Arduino Control Structures</a></li>
+                    <!-- Arduino Functions -->
+                    <li><a class="dropdown-item" href="#arduino-functions">Arduino Functions</a></li>
+                    <!-- Arduino Libraries -->
+                    <li><a class="dropdown-item" href="#arduino-libraries">Arduino Libraries</a></li>
+                    <!-- Arduino Communication Protocols -->
+                    <li><a class="dropdown-item" href="#arduino-communication">Arduino Communication Protocols</a></li>
+                    <!-- Arduino Sensors -->
+                    <li><a class="dropdown-item" href="#arduino-sensors">Arduino Sensors</a></li>
+                    <!-- Arduino Projects -->
+                    <li><a class="dropdown-item" href="#arduino-projects">Arduino Projects</a></li>
+                    <li><a class="dropdown-item " href="/GSM">GSM</a></li>
+                </ul>
+              </li>
+              <!-- Arduino section -->
+              <!--PYTHON SECTION -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  PYTHON
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#python-comment">Comment</a></li>
+                    <!-- Variable -->
+                    <li><a class="dropdown-item" href="#python-variable">Variable</a></li>
+                    <!-- Data Type -->
+                    <li><a class="dropdown-item" href="#python-data-type">Data Type</a></li>
+                    <!-- Strings -->
+                    <li><a class="dropdown-item" href="#python-strings">Strings</a></li>
+                    <!-- Lists -->
+                    <li><a class="dropdown-item" href="#python-lists">Lists</a></li>
+                    <!-- Tuples -->
+                    <li><a class="dropdown-item" href="#python-tuples">Tuples</a></li>
+                    <!-- Dictionaries -->
+                    <li><a class="dropdown-item" href="#python-dictionaries">Dictionaries</a></li>
+                    <!-- Conditional Statements -->
+                    <li><a class="dropdown-item" href="#python-conditional">Conditional Statements</a></li>
+                    <!-- Loops -->
+                    <li><a class="dropdown-item" href="#python-loops">Loops</a></li>
+                    <!-- Functions -->
+                    <li><a class="dropdown-item" href="#python-functions">Functions</a></li>
+                    <!-- Classes and Objects -->
+                    <li><a class="dropdown-item" href="#python-classes">Classes and Objects</a></li>
+                    <!-- Modules and Packages -->
+                    <li><a class="dropdown-item" href="#python-modules">Modules and Packages</a></li>
+                    <!-- File Handling -->
+                    <li><a class="dropdown-item" href="#python-file">File Handling</a></li>
+                    <!-- Exceptions -->
+                    <li><a class="dropdown-item" href="#python-exceptions">Exceptions</a></li>
+                    <!-- Regular Expressions -->
+                    <li><a class="dropdown-item" href="#python-regex">Regular Expressions</a></li>
+                    <!-- Python GUI Programming -->
+                    <li><a class="dropdown-item" href="#python-gui">Python GUI Programming</a></li>
+                    <!-- Python Libraries and Frameworks -->
+                    <li><a class="dropdown-item" href="#python-libraries">Python Libraries and Frameworks</a></li>
+                    <!-- Python Projects -->
+                    <li><a class="dropdown-item" href="#python-projects">Python Projects</a></li>
+                </ul>
+              </li>
+              <!-- END OF PYTHON SECTION -->
+              <!-- C++ SECTION -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  C++
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#cpp-introduction">Introduction</a></li>
+                    <!-- Variables and Data Types -->
+                    <li><a class="dropdown-item" href="#cpp-variables">Variables and Data Types</a></li>
+                    <!-- Operators -->
+                    <li><a class="dropdown-item" href="#cpp-operators">Operators</a></li>
+                    <!-- Control Flow -->
+                    <li><a class="dropdown-item" href="#cpp-control-flow">Control Flow</a></li>
+                    <!-- Functions -->
+                    <li><a class="dropdown-item" href="#cpp-functions">Functions</a></li>
+                    <!-- Arrays -->
+                    <li><a class="dropdown-item" href="#cpp-arrays">Arrays</a></li>
+                    <!-- Pointers -->
+                    <li><a class="dropdown-item" href="#cpp-pointers">Pointers</a></li>
+                    <!-- Strings -->
+                    <li><a class="dropdown-item" href="#cpp-strings">Strings</a></li>
+                    <!-- Classes and Objects -->
+                    <li><a class="dropdown-item" href="#cpp-classes">Classes and Objects</a></li>
+                    <!-- Inheritance -->
+                    <li><a class="dropdown-item" href="#cpp-inheritance">Inheritance</a></li>
+                    <!-- Polymorphism -->
+                    <li><a class="dropdown-item" href="#cpp-polymorphism">Polymorphism</a></li>
+                    <!-- Templates -->
+                    <li><a class="dropdown-item" href="#cpp-templates">Templates</a></li>
+                    <!-- Exception Handling -->
+                    <li><a class="dropdown-item" href="#cpp-exceptions">Exception Handling</a></li>
+                    <!-- Standard Template Library (STL) -->
+                    <li><a class="dropdown-item" href="#cpp-stl">Standard Template Library (STL)</a></li>
+                    <!-- File Handling -->
+                    <li><a class="dropdown-item" href="#cpp-file">File Handling</a></li>
+                    <!-- C++ Projects -->
+                    <li><a class="dropdown-item" href="#cpp-projects">C++ Projects</a></li>
+                </ul>
+              </li>
+              <!-- C++ END SECTION -->
+                <li class="nav-item">
+                <a class="nav-link active " aria-current="page" href="#">Arduino Projects</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success search-button" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      {% block body %}
+      <!-- body side  -->
+      <div class="container mt-5 content" >
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Python</h5>
+                        <p class="card-text">"Python is a high-level programming language known for its simplicity and readability."</p>
+                        <a href="#python" class="btn btn-primary">Explore Python</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Arduino</h5>
+                        <p class="card-text">"Arduino is an open-source electronics platform based on easy-to-use hardware and software."</p>
+                        <a href="#arduino" class="btn btn-primary">Discover Arduino</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">C++</h5>
+                        <p class="card-text">"C++ is a powerful programming language widely used for system/application software, game development, and more."</p>
+                        <a href="#cplusplus" class="btn btn-primary">Learn C++</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    <!-- end of body -->
+    <!-- footer start -->
+ <!-- Remove the container if you want to extend the Footer to full width. -->
+<!-- <div class="container my-5"> -->
+  <!-- Footer -->
+  <footer
+          class="text-center text-lg-start text-white"
+          style="background-color: #45526e"
+          >
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              SHWATECH LTD
+            </h6>
+            <p>
+            We teach you the skills that you need 
+            to become the best version of yourself
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+            <p>
+              <a class="text-white">ARDUINOS</a>
+            </p>
+            <p>
+              <a class="text-white">ESP32</a>
+            </p>
+            <p>
+              <a class="text-white">NODEMCU</a>
+            </p>
+            <p>
+              <a class="text-white">RASPBERRY PI</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              Useful links
+            </h6>
+            <p>
+              <a class="text-white">Your Account</a>
+            </p>
+            <p>
+              <a class="text-white">Become an Affiliate</a>
+            </p>
+            <p>
+              <a class="text-white">Shipping Rates</a>
+            </p>
+            <p>
+              <a class="text-white">Help</a>
+            </p>
+          </div>
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+            <p><i class="fas fa-home mr-3"></i> KIGALI, KK 390st, US</p>
+            <p><i class="fas fa-envelope mr-3"></i> ntirushwajeanmarc@gmail.com</p>
+            <p><i class="fas fa-phone mr-3"></i> + 250 078 509 7557</p>
+            
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+
+      <hr class="my-3">
+
+      <!-- Section: Copyright -->
+      <section class="p-3 pt-0">
+        <div class="row d-flex align-items-center">
+          <!-- Grid column -->
+          <div class="col-md-7 col-lg-8 text-center text-md-start">
+            <!-- Copyright -->
+            <div class="p-3">
+              © 2020 Copyright:
+              <a class="text-white" href="https://mdbootstrap.com/"
+                 >SHWATECH.com</a
+                >
+            </div>
+            <!-- Copyright -->
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+            <!-- Facebook -->
+            <a href="https://web.facebook.com/reid.back.10/"
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-facebook-f"></i
+              ></a>
+
+            <!-- Twitter -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-twitter"></i
+              ></a>
+
+            <!-- Google -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-google"></i
+              ></a>
+
+            <!-- Instagram -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-instagram"></i
+              ></a>
+          </div>
+          <!-- Grid column -->
+        </div>
+      </section>
+      <!-- Section: Copyright -->
+    </div>
+    <!-- Grid container -->
+  </footer>
+  <!-- Footer -->
+<!-- </div> -->
+<!-- End of .container -->
+            
+    <!-- end footer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
