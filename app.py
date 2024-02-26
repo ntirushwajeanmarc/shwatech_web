@@ -1,4 +1,4 @@
-from flask import Flask, request,render_template,url_for
+from flask import Flask, request,render_template,url_for,jsonify
 app = Flask(__name__)
 
 @app.route('/')
@@ -10,5 +10,21 @@ def gsm():
 @app.route('/arduino-sensors')
 def arduinoSensors():
     return render_template('sensors.html')
+
+content_data = [
+    {"title": "Introduction to Python", "url": "/python-intro"},
+    {"title": "Getting Started with Arduino", "url": "/arduino-start"},
+    {"title": "C++ Basics", "url": "/cpp-basics"},
+    {"title": "gsm", "url": "/GSM"},
+    {"title": "sensors", "url": "/arduino-sensors"},
+    
+    # Add more content data as needed
+]
+
+@app.route('/search', methods=['GET'])
+def search():
+    query = request.args.get('q', '').lower()
+    results = [content for content in content_data if query in content['title'].lower()]
+    return jsonify(results)
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

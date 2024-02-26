@@ -150,15 +150,33 @@
                 <a class="nav-link active " aria-current="page" href="https://www.youtube.com/@shwatech">Youtube tutorials</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success search-button" type="submit">Search</button>
+            <!-- search form -->
+            <div class="modal" id="search-results-modal" data-bs-backdrop="false">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Search Results</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body" id="search-results-body">
+                    <!-- Search results will be displayed here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Modify the search form -->
+            <form class="d-flex" id="search-form">
+                <input class="form-control me-2" id="search-input" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success search-button" type="submit">Search</button>
             </form>
+          <!-- end of search form -->
           </div>
         </div>
       </nav>
       {% block body %}
       <!-- body side  -->
+      
       <div class="container mt-5 content" >
         <div class="row">
             <div class="col-md-4">
