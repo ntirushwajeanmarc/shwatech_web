@@ -33,3 +33,6 @@ pre{
     border-radius: 5px;
     overflow-x: auto; /* Allow horizontal scrolling */
 }
+.nav{
+color: white;
+}
