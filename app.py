@@ -7,5 +7,8 @@ def index():
 @app.route('/GSM')
 def gsm():
     return render_template('gsm.html')
+@app.route('/arduino-sensors')
+def arduinoSensors():
+    return render_template('sensors.html')
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
