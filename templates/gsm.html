@@ -13,7 +13,7 @@
         <p class="link-success">This is the codes to send the messages: </p>
         <pre>
             <code class="arduino">
-                #include <SoftwareSerial.h>
+                #include &lt;SoftwareSerial.h&gt;
 
                     SoftwareSerial gsmSerial(9, 5); //RX, TX
                     
@@ -52,10 +52,11 @@
                GSM will send message if it's night and day and also if smoke detectors detects smoke 
                in your house at night i will let you know via sms.
             </p>
-            <img src="{{ url_for('static', filename='images/gsmgas.JPG') }}" alt="">
+            <img src="{{ url_for('static', filename='images/gsmgas.JPG') }}" alt="3D image">
+            <h2 class="link-success">Codes to utilize to achieve it: </h2>
             <pre>
                 <code>
-                    #include <SoftwareSerial.h>
+                    #include &lt;SoftwareSerial.h&gt;
 
                         int gas_sensor = 3;
                         int LDR = 4;
