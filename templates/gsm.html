@@ -47,6 +47,108 @@
                     }
             </code>
             </pre>
+            <h1>GSM with LDR and Smoke detector</h1>
+            <p>This a small project which will teach you how to apply gsm in real life projects.
+               GSM will send message if it's night and day and also if smoke detectors detects smoke 
+               in your house at night i will let you know via sms.
+            </p>
+            <img src="{{ url_for('static', filename='images/gsmgas.JPG') }}" alt="">
+            <pre>
+                <code>
+                    #include <SoftwareSerial.h>
+
+                        int gas_sensor = 3;
+                        int LDR = 4;
+                        int potential_meter = A1;
+                        int bell = 5;
+                        int RX = 8;
+                        int TX = 9;
+                        int potentialR ;
+                        const signed long daymessage = 60000;
+                        unsigned long previousday = 0;
+                        const signed long nightmessage = 120000;
+                        unsigned long previousnight = 0;
+                        const signed long smockmessage = 60000;
+                        unsigned long previousmoke = 0;
+                        unsigned long current;
+                        
+                        SoftwareSerial gsm(RX, TX);
+                        void setup() {
+                        Serial.begin(9600);
+                        Serial.println("Starting gsm serial!");
+                        gsm.begin(9600);
+                        pinMode(gas_sensor, INPUT);
+                        pinMode(LDR, INPUT);
+                        pinMode(potential_meter, INPUT);
+                        pinMode(bell, OUTPUT);
+                        }
+                        void SendMessage(){
+                        Serial.println("Setting the GSM in text mode");
+                        gsm.println("AT+CMGF=1\r");
+                        delay(2000);
+                        Serial.println("Sending SMS to the desired phone number!");
+                        gsm.println("AT+CMGS=\"+250xxxxxxxx\"\r");//Replace xxxxxxxxxxx with your real number     
+                        delay(2000);           
+                        gsm.println("The bell is on due to the fact that there is the presence of smoke!");    
+                        delay(200);
+                        gsm.println((char)26);               
+                        delay(200);
+                        }
+                        
+                        void day(){
+                        Serial.println("Setting the GSM in text mode");
+                        gsm.println("AT+CMGF=1\r");
+                        delay(2000);
+                        Serial.println("Sending SMS to the desired phone number!");
+                        gsm.println("AT+CMGS=\"+250xxxxxxxx\"\r"); //Replace xxxxxxxxxxx with your real number  
+                        delay(2000);           
+                        gsm.println("It's day the system is not ready");    
+                        delay(200);
+                        gsm.println((char)26);               
+                        delay(200);
+                        }
+                        void night(){
+                        Serial.println("Setting the GSM in text mode");
+                        gsm.println("AT+CMGF=1\r");
+                        delay(2000);
+                        Serial.println("Sending SMS to the desired phone number!");
+                        gsm.println("AT+CMGS=\"+250xxxxxxxx\"\r");//Replace xxxxxxxxxxx with your real number    
+                        delay(2000);           
+                        gsm.println("It's night so system is ready!");    
+                        delay(200);
+                        gsm.println((char)26);  
+                        delay(200);
+                        }
+                        void loop() {
+                        current = millis();
+                        potentialR = analogRead(potential_meter);
+                        int ldrR = digitalRead(LDR);
+                        int gas_sensorR = digitalRead(gas_sensor);
+                        if(gas_sensorR == LOW && ldrR == HIGH){
+                        digitalWrite(bell, HIGH);
+                        delay(potentialR);
+                        digitalWrite(bell, LOW);
+                        delay(potentialR);
+                        if (current-previousmoke > smockmessage){
+                        SendMessage();
+                        previousmoke = current;
+                        }}
+                        if (ldrR == LOW){
+                          if (current-previousday>daymessage){
+                            day();
+                            previousday = current;
+                          }
+                        }
+                        if (ldrR == HIGH){
+                          if (current - previousnight> nightmessage){
+                           night();
+                           previousnight = current;
+                          }
+                        }
+                        
+                        }
+                </code>
+            </pre>
     </div>
 </div>
 
