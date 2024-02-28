@@ -15,7 +15,7 @@ content_data = [
     {"title": "Introduction to Python", "url": "/python-intro"},
     {"title": "Getting Started with Arduino", "url": "/arduino-start"},
     {"title": "C++ Basics", "url": "/cpp-basics"},
-    {"title": "gsm", "url": "/gsm"},
+    {"title": "gsm", "url": "/arduino-gsm"},
     {"title": "sensors", "url": "/arduino-sensors"},
     
     # Add more content data as needed
