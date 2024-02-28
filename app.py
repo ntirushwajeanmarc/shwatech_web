@@ -11,6 +11,10 @@ def gsm():
 def arduinoSensors():
     return render_template('arduino/sensors.html')
 
+@app.route('/python-comments')
+def py_comments():
+    return render_template('python/comment.html')
+
 content_data = [
     {"title": "Introduction to Python", "url": "/python-intro"},
     {"title": "Getting Started with Arduino", "url": "/arduino-start"},
