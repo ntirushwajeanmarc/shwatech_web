@@ -9,7 +9,7 @@
    MQ2 gas sensor is used for detecting smoke and some flammable gases like LPG, Methane, etc. 
    It changes its resistance depending on the type of the gas. This principle can be 
    used to raise an alarm based on the concentration of the gas.</p>
-   <img src="{{ url_for('static', filename='images/gas-sensor.png') }}" alt="Gas sensor">
+   <img src="{{ url_for('static', filename='images/arduino/gas-sensor.png') }}" alt="Gas sensor">
    <p>An image of the MQ2 gas sensor is given above. As you can see, it has 4 pins. 
     Out of these the Aout pin gives the Analog voltage in proportion to the gas concentration.
     Higher the gas concentration, higher the voltage on the Aout pin. 
@@ -20,7 +20,7 @@
 </p>
 <h1>Circuit Diagram</h1>
 <p>The circuit diagram is shown below −</p>
-<img src="{{ url_for('static', filename='images/gas-sensor-connection.png') }}" alt="sensor connection">
+<img src="{{ url_for('static', filename='images/arduino/gas-sensor-connection.png') }}" alt="sensor connection">
 <p>As you can see, Vcc of MQ2 is connected to 5V, GND to GND and Aout to A0.
 The code is pretty straightforward, as you can see below −</p>
 <pre>
@@ -43,6 +43,27 @@ The code is pretty straightforward, as you can see below −</p>
            }
         }
     </code>
+</pre>
+<p>If you want to use digital pin of sensor instead of analog you can also use this code to read it</p>
+<pre class="arduino">
+   <code>
+      int gas_sensor = 6;
+
+      void setup(){
+        Serial.begin(9600);
+        pinMode(gas_sensor, INPUT);
+      }
+      void loop(){
+        int DigitalReadings = digitalRead(gas_sensor);
+        if (DigitalReadings == 1){
+          Serial.println("High contration!");
+      
+            }
+            else{
+              Serial.println("low concetration!");
+            }
+      }
+   </code>
 </pre>
 </div>
 </div>

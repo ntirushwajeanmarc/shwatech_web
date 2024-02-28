@@ -4,18 +4,18 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
-@app.route('/GSM')
+@app.route('/arduino-gsm')
 def gsm():
-    return render_template('gsm.html')
+    return render_template('arduino/gsm.html')
 @app.route('/arduino-sensors')
 def arduinoSensors():
-    return render_template('sensors.html')
+    return render_template('arduino/sensors.html')
 
 content_data = [
     {"title": "Introduction to Python", "url": "/python-intro"},
     {"title": "Getting Started with Arduino", "url": "/arduino-start"},
     {"title": "C++ Basics", "url": "/cpp-basics"},
-    {"title": "gsm", "url": "/GSM"},
+    {"title": "gsm", "url": "/gsm"},
     {"title": "sensors", "url": "/arduino-sensors"},
     
     # Add more content data as needed
