@@ -14,6 +14,9 @@ def arduinoSensors():
 @app.route('/python-comments')
 def py_comments():
     return render_template('python/comment.html')
+@app.route('/python-variable')
+def py_variables():
+    return render_template('python/variable.html')
 
 content_data = [
     {"title": "Introduction to Python", "url": "/python-intro"},
