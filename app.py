@@ -17,6 +17,9 @@ def py_comments():
 @app.route('/python-variable')
 def py_variables():
     return render_template('python/variable.html')
+@app.route('/python-data-type')
+def py_data_type():
+    return render_template('python/datatype.html')
 
 content_data = [
     {"title": "Introduction to Python", "url": "/python-intro"},
