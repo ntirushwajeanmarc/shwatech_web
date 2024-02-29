@@ -25,44 +25,44 @@
 The code is pretty straightforward, as you can see below −</p>
 <pre>
     <code class="arduino">
-        int sensorPin = A0;
-        int sensorThreshold = 300;
-        
-        void setup() {
-           // put your setup code here, to run once:
-           Serial.begin(9600);
-           pinMode(sensorPin, INPUT);
-        }
-        
-        void loop() {
-           // put your main code here, to run repeatedly:
-           if (analogRead(sensorPin) > sensorThreshold) {
-              Serial.println("Gas concentration too high!");
-           } else {
-              Serial.println("Gas concentration in control");
-           }
-        }
+int sensorPin = A0;
+int sensorThreshold = 300;
+
+void setup() {
+   // put your setup code here, to run once:
+   Serial.begin(9600);
+   pinMode(sensorPin, INPUT);
+}
+
+void loop() {
+   // put your main code here, to run repeatedly:
+   if (analogRead(sensorPin) > sensorThreshold) {
+      Serial.println("Gas concentration too high!");
+   } else {
+      Serial.println("Gas concentration in control");
+   }
+}
     </code>
 </pre>
 <p>If you want to use digital pin of sensor instead of analog you can also use this code to read it</p>
 <pre class="arduino">
    <code>
-      int gas_sensor = 6;
+int gas_sensor = 6;
 
-      void setup(){
-        Serial.begin(9600);
-        pinMode(gas_sensor, INPUT);
+void setup(){
+   Serial.begin(9600);
+   pinMode(gas_sensor, INPUT);
+}
+void loop(){
+   int DigitalReadings = digitalRead(gas_sensor);
+   if (DigitalReadings == 1){
+      Serial.println("High contration!");
+
       }
-      void loop(){
-        int DigitalReadings = digitalRead(gas_sensor);
-        if (DigitalReadings == 1){
-          Serial.println("High contration!");
-      
-            }
-            else{
-              Serial.println("low concetration!");
-            }
+      else{
+         Serial.println("low concetration!");
       }
+}
    </code>
 </pre>
 </div>
