@@ -13,38 +13,38 @@
         <p class="link-success">This is the codes to send the messages: </p>
         <pre>
             <code class="arduino">
-                #include &lt;SoftwareSerial.h&gt;
+#include &lt;SoftwareSerial.h&gt;
 
-                    SoftwareSerial gsmSerial(9, 5); //RX, TX
+SoftwareSerial gsmSerial(9, 5); //RX, TX
                     
-                    void setup()
-                    {
-                       gsmSerial.begin(9600); // Setting the baud rate of GSM Module
-                       Serial.begin(9600);    // Setting the baud rate of Serial Monitor (Arduino)
-                       delay(1000);
-                       Serial.println("Preparing to send SMS");
-                       SendMessage();
-                    }
+void setup()
+{
+gsmSerial.begin(9600); // Setting the baud rate of GSM Module
+Serial.begin(9600);    // Setting the baud rate of Serial Monitor (Arduino)
+delay(1000);
+Serial.println("Preparing to send SMS");
+SendMessage();
+}
                     
-                    void loop()
-                    {
+void loop()
+{
                     
-                    }
-                    void SendMessage()
-                    {
-                       Serial.println("Setting the GSM in text mode");
-                       gsmSerial.println("AT+CMGF=1\r");
-                       delay(2000);
-                       Serial.println("Sending SMS to the desired phone number!");
-                       gsmSerial.println("AT+CMGS=\"+xxxxxxxxxxx\"\r");
-                       // Replace x with mobile number
-                       delay(2000);
+}
+void SendMessage()
+{
+Serial.println("Setting the GSM in text mode");
+gsmSerial.println("AT+CMGF=1\r");
+delay(2000);
+Serial.println("Sending SMS to the desired phone number!");
+gsmSerial.println("AT+CMGS=\"+xxxxxxxxxxx\"\r");
+// Replace x with mobile number
+delay(2000);
                     
-                       gsmSerial.println("Hello from SIM900");    // SMS Text
-                       delay(200);
-                       gsmSerial.println((char)26);               // ASCII code of CTRL+Z
-                       delay(2000);
-                    }
+gsmSerial.println("Hello from SIM900");    // SMS Text
+delay(200);
+gsmSerial.println((char)26);               // ASCII code of CTRL+Z
+delay(2000);
+}
             </code>
             </pre>
             <h1>GSM with LDR and Smoke detector</h1>
@@ -56,98 +56,98 @@
             <h2 class="link-success">Codes to utilize to achieve it: </h2>
             <pre class="arduino">
                 <code>
-                    #include &lt;SoftwareSerial.h&gt;
+#include &lt;SoftwareSerial.h&gt;
 
-                        int gas_sensor = 3;
-                        int LDR = 4;
-                        int potential_meter = A1;
-                        int bell = 5;
-                        int RX = 8;
-                        int TX = 9;
-                        int potentialR ;
-                        const signed long daymessage = 60000;
-                        unsigned long previousday = 0;
-                        const signed long nightmessage = 120000;
-                        unsigned long previousnight = 0;
-                        const signed long smockmessage = 60000;
-                        unsigned long previousmoke = 0;
-                        unsigned long current;
+int gas_sensor = 3;
+int LDR = 4;
+int potential_meter = A1;
+int bell = 5;
+int RX = 8;
+int TX = 9;
+int potentialR ;
+const signed long daymessage = 60000;
+unsigned long previousday = 0;
+const signed long nightmessage = 120000;
+unsigned long previousnight = 0;
+const signed long smockmessage = 60000;
+unsigned long previousmoke = 0;
+unsigned long current;
                         
-                        SoftwareSerial gsm(RX, TX);
-                        void setup() {
-                        Serial.begin(9600);
-                        Serial.println("Starting gsm serial!");
-                        gsm.begin(9600);
-                        pinMode(gas_sensor, INPUT);
-                        pinMode(LDR, INPUT);
-                        pinMode(potential_meter, INPUT);
-                        pinMode(bell, OUTPUT);
-                        }
-                        void SendMessage(){
-                        Serial.println("Setting the GSM in text mode");
-                        gsm.println("AT+CMGF=1\r");
-                        delay(2000);
-                        Serial.println("Sending SMS to the desired phone number!");
-                        gsm.println("AT+CMGS=\"+250xxxxxxxx\"\r");//Replace xxxxxxxxxxx with your real number     
-                        delay(2000);           
-                        gsm.println("The bell is on due to the fact that there is the presence of smoke!");    
-                        delay(200);
-                        gsm.println((char)26);               
-                        delay(200);
-                        }
+SoftwareSerial gsm(RX, TX);
+void setup() {
+Serial.begin(9600);
+Serial.println("Starting gsm serial!");
+gsm.begin(9600);
+pinMode(gas_sensor, INPUT);
+pinMode(LDR, INPUT);
+pinMode(potential_meter, INPUT);
+pinMode(bell, OUTPUT);
+}
+void SendMessage(){
+Serial.println("Setting the GSM in text mode");
+gsm.println("AT+CMGF=1\r");
+delay(2000);
+Serial.println("Sending SMS to the desired phone number!");
+gsm.println("AT+CMGS=\"+250xxxxxxxx\"\r");//Replace xxxxxxxxxxx with your real number     
+delay(2000);           
+gsm.println("The bell is on due to the fact that there is the presence of smoke!");    
+delay(200);
+gsm.println((char)26);               
+delay(200);
+}
                         
-                        void day(){
-                        Serial.println("Setting the GSM in text mode");
-                        gsm.println("AT+CMGF=1\r");
-                        delay(2000);
-                        Serial.println("Sending SMS to the desired phone number!");
-                        gsm.println("AT+CMGS=\"+250xxxxxxxx\"\r"); //Replace xxxxxxxxxxx with your real number  
-                        delay(2000);           
-                        gsm.println("It's day the system is not ready");    
-                        delay(200);
-                        gsm.println((char)26);               
-                        delay(200);
-                        }
-                        void night(){
-                        Serial.println("Setting the GSM in text mode");
-                        gsm.println("AT+CMGF=1\r");
-                        delay(2000);
-                        Serial.println("Sending SMS to the desired phone number!");
-                        gsm.println("AT+CMGS=\"+250xxxxxxxx\"\r");//Replace xxxxxxxxxxx with your real number    
-                        delay(2000);           
-                        gsm.println("It's night so system is ready!");    
-                        delay(200);
-                        gsm.println((char)26);  
-                        delay(200);
-                        }
-                        void loop() {
-                        current = millis();
-                        potentialR = analogRead(potential_meter);
-                        int ldrR = digitalRead(LDR);
-                        int gas_sensorR = digitalRead(gas_sensor);
-                        if(gas_sensorR == LOW && ldrR == HIGH){
-                        digitalWrite(bell, HIGH);
-                        delay(potentialR);
-                        digitalWrite(bell, LOW);
-                        delay(potentialR);
-                        if (current-previousmoke > smockmessage){
-                        SendMessage();
-                        previousmoke = current;
-                        }}
-                        if (ldrR == LOW){
-                          if (current-previousday>daymessage){
-                            day();
-                            previousday = current;
-                          }
-                        }
-                        if (ldrR == HIGH){
-                          if (current - previousnight> nightmessage){
-                           night();
-                           previousnight = current;
-                          }
-                        }
+void day(){
+Serial.println("Setting the GSM in text mode");
+gsm.println("AT+CMGF=1\r");
+delay(2000);
+Serial.println("Sending SMS to the desired phone number!");
+gsm.println("AT+CMGS=\"+250xxxxxxxx\"\r"); //Replace xxxxxxxxxxx with your real number  
+delay(2000);           
+gsm.println("It's day the system is not ready");    
+delay(200);
+gsm.println((char)26);               
+delay(200);
+}
+void night(){
+Serial.println("Setting the GSM in text mode");
+gsm.println("AT+CMGF=1\r");
+delay(2000);
+Serial.println("Sending SMS to the desired phone number!");
+gsm.println("AT+CMGS=\"+250xxxxxxxx\"\r");//Replace xxxxxxxxxxx with your real number    
+delay(2000);           
+gsm.println("It's night so system is ready!");    
+delay(200);
+gsm.println((char)26);  
+delay(200);
+}
+void loop() {
+current = millis();
+potentialR = analogRead(potential_meter);
+int ldrR = digitalRead(LDR);
+int gas_sensorR = digitalRead(gas_sensor);
+if(gas_sensorR == LOW && ldrR == HIGH){
+digitalWrite(bell, HIGH);
+delay(potentialR);
+digitalWrite(bell, LOW);
+delay(potentialR);
+if (current-previousmoke > smockmessage){
+SendMessage();
+previousmoke = current;
+}}
+if (ldrR == LOW){
+  if (current-previousday>daymessage){
+    day();
+    previousday = current;
+  }
+}
+if (ldrR == HIGH){
+  if (current - previousnight> nightmessage){
+    night();
+    previousnight = current;
+  }
+}
                         
-                        }
+}
                 </code>
             </pre>
     </div>

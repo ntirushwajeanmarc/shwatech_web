@@ -28,7 +28,7 @@
     padding: 50px;
 }
 pre{
-    background-color: #131d17;
+    background-color: white;
     padding: 10px;
     border-radius: 5px;
     overflow-x: auto; /* Allow horizontal scrolling */
