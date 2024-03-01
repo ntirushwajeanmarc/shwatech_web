@@ -34,7 +34,6 @@ content_data = [
     {"title": "C++ Basics", "url": "/cpp-basics"},
     {"title": "gsm", "url": "/arduino-gsm"},
     {"title": "sensors", "url": "/arduino-sensors"},
-    
     # Add more content data as needed
 ]
 
