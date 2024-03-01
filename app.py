@@ -1,6 +1,6 @@
 from flask import Flask, request,render_template,url_for,jsonify
-app = Flask(__name__)
 
+app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -16,6 +16,7 @@ def arduinoSensors():
 def arduino_intro():
     return render_template('arduino/introduction.html')
 #arduino end
+
 #Python
 @app.route('/python-comments')
 def py_comments():
