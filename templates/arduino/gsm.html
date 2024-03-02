@@ -150,6 +150,77 @@ if (ldrR == HIGH){
 }
                 </code>
             </pre>
+            <h3>shortened version of the codes above</h3>
+            <pre class="arduino">
+              <code>
+#include <SoftwareSerial.h>
+int gas_sensor = 3;
+int LDR = 4;
+int potential_meter = A1;
+int bell = 5;
+int RX = 8;
+int TX = 9;
+int potentialR ;
+const signed long daymessage = 60000;
+unsigned long previousday = 0;
+const signed long nightmessage = 120000;
+unsigned long previousnight = 0;
+const signed long smockmessage = 60000;
+unsigned long previousmoke = 0;
+unsigned long current;
+                        
+SoftwareSerial gsm(RX, TX);
+void setup() {
+Serial.begin(9600);
+Serial.println("Starting gsm serial!");
+gsm.begin(9600);
+pinMode(gas_sensor, INPUT);
+pinMode(LDR, INPUT);
+pinMode(potential_meter, INPUT);
+pinMode(bell, OUTPUT);
+}
+void SendMessage(String message){
+Serial.println("Setting the GSM in text mode");
+gsm.println("AT+CMGF=1\r");
+delay(2000);
+Serial.println("Sending SMS to the desired phone number!");
+gsm.println("AT+CMGS=\"+250xxxxxxxx\"\r");//Replace xxxxxxxxxxx with your real number     
+delay(2000);           
+gsm.println(message); 
+delay(200);
+gsm.println((char)26);               
+delay(200);
+}
+void loop() {
+current = millis();
+potentialR = analogRead(potential_meter);
+int ldrR = digitalRead(LDR);
+int gas_sensorR = digitalRead(gas_sensor);
+if(gas_sensorR == LOW && ldrR == HIGH){
+digitalWrite(bell, HIGH);
+delay(potentialR);
+digitalWrite(bell, LOW);
+delay(potentialR);
+if (current-previousmoke > smockmessage){
+SendMessage("The bell is on due to the fact that there is the presence of smoke!");
+previousmoke = current;
+}}
+if (ldrR == LOW){
+  if (current-previousday>daymessage){
+    SendMessage("It's day the system is not ready");
+    previousday = current;
+  }
+}
+if (ldrR == HIGH){
+  if (current - previousnight> nightmessage){
+    SendMessage("It's night so system is ready!");
+    previousnight = current;
+  }
+}
+                        
+}
+              </code>
+            </pre>
     </div>
 </div>
 
