@@ -55,7 +55,7 @@ def arduino_libraries():
 def arduino_communication():
     return render_template('/arduino/communication.html')
 
-@app.route('//arduino-projects')
+@app.route('/arduino-projects')
 def arduino_project():
     return render_template('arduino/projects.html')
 #arduino end
