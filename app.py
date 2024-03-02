@@ -17,32 +17,47 @@ def arduino_intro():
     return render_template('arduino/introduction.html')
 @app.route('/arduino-basics')
 def arduino_basics():
-    return render_template('')
+    return render_template('arduino/basics.html')
 
 @app.route('/arduino-ide')
 def arduino_ide():
-    return render_template('')
+    return render_template('arduino/ide.html')
 
 @app.route('/arduino-syntax')
 def syntax():
-    return render_template('')
+    return render_template('arduino/syntax.html')
 
 @app.route('/arduino-variables')
 def arduino_variable():
-    return render_template('')
+    return render_template('arduino/variiable.html')
 
 @app.route('/arduino-digital-io')
 def arduino_digital():
-    return render_template('')
+    return render_template('arduino/digital.html')
 
 @app.route('/arduino-analog-io')
 def arduino_analog():
-    return render_template('')
+    return render_template('arduino/analog.html')
 
 @app.route('/arduino-control')
 def arduino_controller():
-    return render_template('')
+    return render_template('arduino/control.html')
 
+@app.route('/arduino-functions')
+def arduino_functions():
+    return render_template('arduino/functions.html')
+
+@app.route('/arduino-libraries')
+def arduino_libraries():
+    return render_template('arduino/library.html')
+
+@app.route('/arduino-communication')
+def arduino_communication():
+    return render_template('/arduino/communication.html')
+
+@app.route('//arduino-projects')
+def arduino_project():
+    return render_template('arduino/projects.html')
 #arduino end
 
 #Python
