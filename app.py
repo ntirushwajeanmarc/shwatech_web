@@ -6,6 +6,7 @@ def index():
     return render_template('index.html')
 
 #api request
+
 data = {
     'phosphorus':4.6,
     'calicium':5.6,
