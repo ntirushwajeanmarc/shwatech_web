@@ -4,6 +4,24 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
+
+#api request
+data = {
+    'phosphorus':4.6,
+    'calicium':5.6,
+    'potassium': 7.8,
+    'ph':5.4,
+    'result':'rice'
+}
+@app.route('/marcapi', methods=['GET','POST'])
+def getapi():
+    if request.method == 'GET':
+        return jsonify(data)
+    if request.method == 'POST':
+        return jsonify(data)
+
+#end of api request
+
 #arduino part
 @app.route('/arduino-gsm')
 def gsm():
