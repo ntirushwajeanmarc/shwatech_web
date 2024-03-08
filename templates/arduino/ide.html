@@ -5,7 +5,52 @@
 {% block body %}
 <div class="container mt-5 content">
     <div class="row">
+    <h1>Download and install Arduino IDE</h1>
+    <p>Learn how to download and install the desktop-based Arduino IDE.</p>
+    <h2>Installation instructions</h2>
+    <h3>Windows</h3>
+    <p><a style="text-decoration: none;"  href="https://downloads.arduino.cc/arduino-ide/arduino-ide_latest_Windows_64bit.exe">
+        <span style="color: rgb(30, 28, 28);">1.</span> 
+        <span >Download the latest release</span> </a>
+        (The download will start after you click this link. Check your browser’s download manager or the Downloads folder on your computer to find the downloaded file)<br>
+        2.Double-click the executable (.exe)<br>
+        3.Follow the instructions in the installation guide.<br>
+        4.When completing the setup, leave Run Arduino IDE ticked to launch the application, or launch it later from the Start Menu.<br>
+    </p>
+    <h3>MacOS</h3>
+    <p><a style="text-decoration: none;"  href="https://downloads.arduino.cc/arduino-ide/arduino-ide_latest_Windows_64bit.exe">
+        <span style="color: rgb(30, 28, 28);">1.</span> 
+        <span >Download the latest release</span> </a>
+        (The download will start after you click this link. Check your browser’s download manager or the Downloads folder on your computer to find the downloaded file)<br>
+        2.Double-click the disk image (.dmg) file.<br>
+        3.Drag and drop the Arduino IDE application into the Applications folder.<br>
+        4.Launch Arduino IDE the same way you would launch any other application (such as ⌘ + Space for Spotlight and search for “Arduino”).<br>
+    </p>
+    <h3>Linux</h3>
+    <p><a style="text-decoration: none;"  href="https://downloads.arduino.cc/arduino-ide/arduino-ide_latest_Windows_64bit.exe">
+        <span style="color: rgb(30, 28, 28);">1.</span> 
+        <span >Download the latest release</span> </a>
+        2.Find the AppImage file in your file manager.<br>
+        3.Make the AppImage file executable:<br>
+          1.Right-click the file.<br>
+          2.Choose Properties,<br>
+          3.Select the Permissions.<br>
+          4.Tick the Allow executing file as program box.<br>
+        4.Double-click the AppImage file to launch Arduino IDE.<br>
 
+        If Arduino IDE fails to open, and you see the text dlopen(): error loading libfuse.so.2 or AppImages require FUSE to run, you may be missing some dependencies[1]. Follow these steps:<br>
+        1.Open the Terminal application.<br>
+
+        2.Enter this command:<br>
+        
+        sudo apt-get -y install libfuse2<br>
+        
+        3.Press Enter and wait for the process to complete.<br>
+        
+        4.Close the Terminal window.<br>
+        
+        5.Try launching Arduino IDE again by double-clicking the AppImage file.<br>
+    </p>
 
         <div class="position-relative">
             <a class="btn btn-success  btn-sm position-absolute top-0 start-0" 
