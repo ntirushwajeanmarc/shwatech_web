@@ -105,5 +105,5 @@ def search():
     results = [content for content in content_data if query in content['title'].lower()]
     return jsonify(results)
 
-# if __name__ == '__main__':
-#     app.run(host='0.0.0.0',debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',debug=True)
